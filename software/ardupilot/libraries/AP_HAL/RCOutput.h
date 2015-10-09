@@ -1,4 +1,3 @@
-
 #ifndef __AP_HAL_RC_OUTPUT_H__
 #define __AP_HAL_RC_OUTPUT_H__
 
@@ -85,4 +84,3 @@ public:
 };
 
 #endif // __AP_HAL_RC_OUTPUT_H__
-

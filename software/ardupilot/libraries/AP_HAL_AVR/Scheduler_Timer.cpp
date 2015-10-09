@@ -45,19 +45,19 @@ using namespace AP_HAL_AVR;
 
 /* ################################################### RedningsGåsa */
 #elif (CONFIG_HAL_BOARD == HAL_BOARD_MEGA2560 )
-#define  AVR_TIMER_OVF_VECT     TIMER4_OVF_vect
-#define  AVR_TIMER_TCNT             TCNT4
-#define  AVR_TIMER_TIFR              TIFR4
-#define  AVR_TIMER_TCCRA           TCCR4A
-#define  AVR_TIMER_TCCRB           TCCR4B
-#define  AVR_TIMER_OCRA            OCR4A
-#define  AVR_TIMER_TIMSK           TIMSK4
-#define  AVR_TIMER_TOIE             TOIE4
-#define  AVR_TIMER_WGM0           WGM40
-#define  AVR_TIMER_WGM1           WGM41
-#define  AVR_TIMER_WGM2           WGM42
-#define  AVR_TIMER_WGM3           WGM43
-#define  AVR_TIMER_CS1               CS41
+#define  AVR_TIMER_OVF_VECT     TIMER5_OVF_vect 
+#define  AVR_TIMER_TCNT             TCNT5
+#define  AVR_TIMER_TIFR              TIFR5
+#define  AVR_TIMER_TCCRA           TCCR5A
+#define  AVR_TIMER_TCCRB           TCCR5B
+#define  AVR_TIMER_OCRA            OCR5A
+#define  AVR_TIMER_TIMSK           TIMSK5
+#define  AVR_TIMER_TOIE             TOIE5
+#define  AVR_TIMER_WGM0           WGM50
+#define  AVR_TIMER_WGM1           WGM51
+#define  AVR_TIMER_WGM2           WGM52
+#define  AVR_TIMER_WGM3           WGM53
+#define  AVR_TIMER_CS1               CS51
 /* ################################################################ */
 
 #endif

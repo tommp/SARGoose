@@ -74,10 +74,13 @@ void setup(void)
     hal.gpio->pinMode(40, HAL_HAL_GPIO_OUTPUT);
     hal.gpio->write(40, HIGH);
 #endif
-
+    hal.console->printf("Initializing INS\n");
     ins.init(AP_InertialSensor::COLD_START, 
 			 AP_InertialSensor::RATE_100HZ);
+    hal.console->printf("INS initialized\n");
+    hal.console->printf("Initializing AHRS\n");
     ahrs.init();
+    hal.console->printf("AHRS initialized\n");
     serial_manager.init();
 
     if( compass.init() ) {

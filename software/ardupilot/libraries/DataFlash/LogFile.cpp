@@ -22,6 +22,10 @@ void DataFlash_Class::Init(const struct LogStructure *structure, uint8_t num_typ
     backend = new DataFlash_APM1(*this);
 #elif CONFIG_HAL_BOARD == HAL_BOARD_APM2
     backend = new DataFlash_APM2(*this);
+/* ################################# For RedningsGåsa */
+//#elif CONFIG_HAL_BOARD == HAL_BOARD_MEGA2560
+//    backend = new DataFlash_MEGA2560(*this);
+/*####################################################*/
 #elif defined(HAL_BOARD_LOG_DIRECTORY)
     backend = new DataFlash_File(*this, HAL_BOARD_LOG_DIRECTORY);
 #else

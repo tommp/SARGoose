@@ -12,6 +12,8 @@
 const AP_HAL::HAL& hal = AP_HAL_AVR_APM1;
 #elif CONFIG_HAL_BOARD == HAL_BOARD_APM2
 const AP_HAL::HAL& hal = AP_HAL_AVR_APM2;
+#elif CONFIG_HAL_BOARD == HAL_BOARD_MEGA2560
+const AP_HAL::HAL& hal = AP_HAL_AVR_MEGA2560;
 #endif
 
 AP_HAL::DigitalSource *a_led;
@@ -21,13 +23,15 @@ AP_HAL::DigitalSource *c_led;
 void loop (void) {
     hal.scheduler->delay(1000);
     hal.gpio->write(13, 1);
-
+    hal.console->print("test");
+    hal.console->println(" begin");
     a_led->write(1);
     b_led->write(0);
     c_led->write(1);
 
     hal.scheduler->delay(1000);
     hal.gpio->write(13, 0);
+    
 
     a_led->write(0);
     b_led->write(1);

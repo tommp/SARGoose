@@ -12,6 +12,8 @@
 const AP_HAL::HAL& hal = AP_HAL_AVR_APM2;
 #elif CONFIG_HAL_BOARD == HAL_BOARD_APM1
 const AP_HAL::HAL& hal = AP_HAL_AVR_APM1;
+#elif CONFIG_HAL_BOARD == HAL_BOARD_MEGA2560
+const AP_HAL::HAL& hal = AP_HAL_AVR_MEGA2560;
 #endif
 
 uint8_t fibs[12] = { 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144 };
@@ -35,7 +37,10 @@ void test_readback() {
         }   
     }
     if (success) {
-        hal.console->printf_P(PSTR("all bytes read successfully\r\n"));
+        for (int i = 0; i < 12; i++) {
+            hal.console->printf_P(PSTR("Success! %d expected %d got %d\r\n"),
+                        i, (int) fibs[i], (int) readback[i]); 
+        }
     }
     hal.console->printf_P(PSTR("done reading back.\r\n"));
 }

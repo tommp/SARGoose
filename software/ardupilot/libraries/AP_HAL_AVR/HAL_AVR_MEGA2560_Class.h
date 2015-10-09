@@ -22,8 +22,10 @@
 class HAL_AVR_MEGA2560 : public AP_HAL::HAL {
 public:
     HAL_AVR_MEGA2560();
+    AP_HAL::UARTDriver* uartD;
     void init(int argc, char * const argv[]) const;
 };
+
 
 /**
  * Static instance exported here, defined in the Class.cpp file

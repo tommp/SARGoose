@@ -80,6 +80,7 @@
 #define HAL_BARO_PX4        5
 #define HAL_BARO_HIL        6
 #define HAL_BARO_VRBRAIN    7
+#define HAL_BARO_BMP180     8
 
 // compass driver types
 #define HAL_COMPASS_HMC5843   1
@@ -303,8 +304,8 @@
 #define HAL_STORAGE_SIZE            4096
 #define HAL_STORAGE_SIZE_AVAILABLE  HAL_STORAGE_SIZE
 #define HAL_INS_DEFAULT HAL_INS_MPU9250
-#define HAL_BARO_DEFAULT HAL_BARO_BMP085 /* Replace with BMP180 */
-#define HAL_COMPASS_DEFAULT HAL_COMPASS_HMC5843
+#define HAL_BARO_DEFAULT HAL_BARO_BMP085 /* Using BMP5883L witch is backwards compatible with BMP085 drivers */
+#define HAL_COMPASS_DEFAULT HAL_COMPASS_HMC5843 /* Using HMC5883L witch is compatible with HMC5843 driver */
 #ifndef CONFIG_HAL_BOARD_SUBTYPE
 #define CONFIG_HAL_BOARD_SUBTYPE HAL_BOARD_SUBTYPE_AVR_MEGA2560
 #endif

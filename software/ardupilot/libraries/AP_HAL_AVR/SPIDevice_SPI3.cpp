@@ -25,7 +25,8 @@ void AVRSPI3DeviceDriver::init() {
     /* the spi3 (USART3) sck pin PORTJ2 is not enumerated
      * by the arduino pin numbers, so we access it directly
      * with AVRDigitalSource. */
-    AVRDigitalSource spi3_sck(_BV(2), PJ);
+    /* Modified for RedningsGåsa, originally PJ _BV(6) */
+    AVRDigitalSource spi3_sck(_BV(1), PB);
     spi3_sck.mode(HAL_GPIO_OUTPUT);
     hal.gpio->pinMode(SPI3_MOSI, HAL_GPIO_OUTPUT);
     hal.gpio->pinMode(SPI3_MISO, HAL_GPIO_INPUT);

@@ -7,6 +7,7 @@
 #include <AP_HAL_AVR/AP_HAL_AVR.h>
 
 const AP_HAL::HAL& hal = AP_HAL_BOARD_DRIVER;
+void async_blinker(void *);
 
 /** 
  * You'll want to use a logic analyzer to watch the effects of this test.

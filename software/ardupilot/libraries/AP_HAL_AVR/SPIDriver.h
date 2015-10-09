@@ -41,10 +41,7 @@ public:
     AP_HAL::SPIDeviceDriver* device(enum AP_HAL::SPIDevice d);
 
 private:
-    AVRSPI0DeviceDriver* _dataflash;
-    AVRSPI0DeviceDriver* _optflow;
-
-    AVRSPI2DeviceDriver* _adc;
+    AVRSPI3DeviceDriver* _dataflash;
 };
 /* ############################################################################### */
 #endif // __AP_HAL_AVR_SPI_DRIVER_H__

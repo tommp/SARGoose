@@ -13,16 +13,16 @@ class DataFlash_Empty : public DataFlash_Block
 {
 private:
     //Methods
-    void              BufferWrite (uint8_t BufferNum, uint16_t IntPageAdr, uint8_t Data);
+    void              BufferWrite (uint8_t BufferNum, uint16_t IntPageAdr, uint8_t Data);/* NI */
     void              BufferToPage (uint8_t BufferNum, uint16_t PageAdr, uint8_t wait);
     void              PageToBuffer(uint8_t BufferNum, uint16_t PageAdr);
     void              WaitReady();
     uint8_t           ReadStatusReg();
     uint8_t           ReadStatus();
     uint16_t          PageSize();
-    void              PageErase (uint16_t PageAdr);
-    void              BlockErase (uint16_t BlockAdr);
-    void              ChipErase();
+    void              PageErase (uint16_t PageAdr);/* NI */
+    void              BlockErase (uint16_t BlockAdr);/* NI */
+    void              ChipErase();/* NI */
     
     void BlockWrite(uint8_t BufferNum, uint16_t IntPageAdr, 
                     const void *pHeader, uint8_t hdr_size,

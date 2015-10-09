@@ -12,6 +12,8 @@
 const AP_HAL::HAL& hal = AP_HAL_AVR_APM2;
 #elif CONFIG_HAL_BOARD == HAL_BOARD_APM1
 const AP_HAL::HAL& hal = AP_HAL_AVR_APM1;
+#elif CONFIG_HAL_BOARD == HAL_BOARD_MEGA2560
+const AP_HAL::HAL& hal = AP_HAL_AVR_MEGA2560;
 #endif
 
 void multiread(AP_HAL::RCInput* in) {

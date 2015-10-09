@@ -67,6 +67,7 @@ void HAL_AVR_MEGA2560::init(int argc, char * const argv[]) const {
     uartA->begin(115200);
     /* The AVR RCInput drivers take an AP_HAL_AVR::ISRRegistry*
      * as the init argument */
+
     rcin->init((void*)&isrRegistry);
     rcout->init(NULL);
     spi->init(NULL);
@@ -82,7 +83,6 @@ void HAL_AVR_MEGA2560::init(int argc, char * const argv[]) const {
      * PD2 : RX1 (uartB)
      * PJ0 : RX3 (uartC)
      */
-
     PORTE |= _BV(0);
     PORTD |= _BV(2);
     PORTJ |= _BV(0);
