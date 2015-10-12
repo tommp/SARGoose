@@ -82,7 +82,7 @@ extern const HAL& hal;
 volatile uint16_t MEGA2560RCInput::_pulse_capt[AVR_RC_INPUT_NUM_CHANNELS] = {0};  
 volatile uint8_t  MEGA2560RCInput::_valid_channels = 0;
 volatile uint16_t MEGA2560RCInput::rcPinValueRAW[AVR_RC_INPUT_NUM_CHANNELS]; // Default RC values
-    
+volatile bool     MEGA2560RCInput::_new_input = false;
 typedef void (*ISRFuncPtr)(void);
 static volatile ISRFuncPtr FireISRRoutine = 0; 
 
@@ -105,6 +105,7 @@ void MEGA2560RCInput::_ppmsum_PL1_isr(void) {
         // sync pulse detected.  Pass through values if at least a minimum number of channels received
         if( channel_ctr >= AVR_RC_INPUT_MIN_CHANNELS ) {
             _valid_channels = channel_ctr;
+            _new_input = true;
         }
         channel_ctr = 0;
     } else {
@@ -113,6 +114,7 @@ void MEGA2560RCInput::_ppmsum_PL1_isr(void) {
             channel_ctr++;
             if (channel_ctr == AVR_RC_INPUT_NUM_CHANNELS) {
                 _valid_channels = AVR_RC_INPUT_NUM_CHANNELS;
+                _new_input = true;
             }
         }
     }
@@ -305,7 +307,16 @@ void MEGA2560RCInput::init(void* _isrregistry) {
 #endif
 }
 
-uint8_t MEGA2560RCInput::valid_channels() { return _valid_channels; }
+uint8_t MEGA2560RCInput::num_channels() { return _valid_channels; }
+
+bool MEGA2560RCInput::new_input() 
+{ 
+    if (_new_input) {
+        _new_input = false;
+        return true;
+    }
+    return false;
+}
 
 /* constrain captured pulse to be between min and max pulsewidth. */
 static inline uint16_t constrain_pulse(uint16_t p) {

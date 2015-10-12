@@ -119,8 +119,7 @@ public:
     void     init(void* isrregistry);
 
     /* Dummy for RedningsGåsa */
-    bool  new_input(){return false;};
-    uint8_t  num_channels(){return AVR_RC_INPUT_NUM_CHANNELS;};
+    bool  new_input();
 
     /**
      * valid_channels():
@@ -129,7 +128,7 @@ public:
      * Could be less than or greater than 8 depending on your incoming radio
      * or PPM stream
      */
-    uint8_t  valid_channels();
+    uint8_t  num_channels();
 
     /**
      * read(uint8_t):
@@ -170,6 +169,7 @@ private:
     static volatile uint8_t  _valid_channels;
     static volatile uint16_t rcPinValueRAW[AVR_RC_INPUT_NUM_CHANNELS];
     static volatile uint16_t edgeTime[8];
+    static volatile bool  _new_input;
     
     /* override state */
     uint16_t _override[AVR_RC_INPUT_NUM_CHANNELS]; 
