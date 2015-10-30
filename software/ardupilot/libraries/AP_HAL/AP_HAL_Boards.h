@@ -59,6 +59,10 @@
 #define HAL_BOARD_SUBTYPE_VRUBRAIN_V51   4003
 #define HAL_BOARD_SUBTYPE_VRUBRAIN_V52   4004
 
+/* Network chip driver types Made for Redningsåsa */
+#define HAL_NETWORK_ESP8266 1
+/* ############################################# */
+
 // InertialSensor driver types
 #define HAL_INS_OILPAN  1
 #define HAL_INS_MPU60XX_SPI 2
@@ -306,6 +310,7 @@
 #define HAL_INS_DEFAULT HAL_INS_MPU9250
 #define HAL_BARO_DEFAULT HAL_BARO_BMP085 /* Using BMP5883L witch is backwards compatible with BMP085 drivers */
 #define HAL_COMPASS_DEFAULT HAL_COMPASS_HMC5843 /* Using HMC5883L witch is compatible with HMC5843 driver */
+#define HAL_NETWORK_DEFAULT HAL_NETWORK_ESP8266
 #ifndef CONFIG_HAL_BOARD_SUBTYPE
 #define CONFIG_HAL_BOARD_SUBTYPE HAL_BOARD_SUBTYPE_AVR_MEGA2560
 #endif

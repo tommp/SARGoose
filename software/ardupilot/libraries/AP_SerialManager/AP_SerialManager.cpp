@@ -39,14 +39,14 @@ const AP_Param::GroupInfo AP_SerialManager::var_info[] PROGMEM = {
     // @Description: Control what protocol to use on the Telem1 port. Note that the Frsky options require external converter hardware. See the wiki for details.
     // @Values: 1:GCS Mavlink, 3:Frsky D-PORT, 4:Frsky S-PORT, 5:GPS, 7:Alexmos Gimbal Serial, 8:SToRM32 Gimbal Serial
     // @User: Standard
-    AP_GROUPINFO("1_PROTOCOL",  1, AP_SerialManager, state[1].protocol, SerialProtocol_MAVLink),
+    AP_GROUPINFO("1_PROTOCOL",  1, AP_SerialManager, state[1].protocol, SerialProtocol_Network),
 
     // @Param: 1_BAUD
     // @DisplayName: Telem1 Baud Rate
     // @Description: The baud rate used on the Telem1 port. The APM2 can support all baudrates up to 115, and also can support 500. The PX4 can support rates of up to 1500. If you setup a rate you cannot support on APM2 and then can't connect to your board you should load a firmware from a different vehicle type. That will reset all your parameters to defaults.
     // @Values: 1:1200,2:2400,4:4800,9:9600,19:19200,38:38400,57:57600,111:111100,115:115200,500:500000,921:921600,1500:1500000
     // @User: Standard
-    AP_GROUPINFO("1_BAUD", 2, AP_SerialManager, state[1].baud, AP_SERIALMANAGER_MAVLINK_BAUD/1000),
+    AP_GROUPINFO("1_BAUD", 2, AP_SerialManager, state[1].baud, AP_SERIALMANAGER_NETWORK_BAUD/1000),
 
     // @Param: 2_PROTOCOL
     // @DisplayName: Telemetry 2 protocol selection
@@ -115,9 +115,9 @@ void AP_SerialManager::init_console()
 void AP_SerialManager::init()
 {
     // initialise pointers to serial ports
-    state[1].uart = hal.uartC;  // serial1, uartC, normally telem1
+    state[1].uart = hal.uartB;  // serial1, uartB, normally telem1
     state[2].uart = hal.uartD;  // serial2, uartD, normally telem2
-    state[3].uart = hal.uartB;  // serial3, uartB, normally 1st GPS
+    state[3].uart = hal.uartC;  // serial3, uartC, normally 1st GPS
     state[4].uart = hal.uartE;  // serial4, uartE, normally 2nd GPS
 
     // initialise serial ports
@@ -167,6 +167,13 @@ void AP_SerialManager::init()
                                          AP_SERIALMANAGER_SToRM32_BUFSIZE_RX,
                                          AP_SERIALMANAGER_SToRM32_BUFSIZE_TX);
                     break;
+                /* ############################## Modified for redningsgåsa */
+                case SerialProtocol_Network:
+                    state[i].uart->begin(map_baudrate(state[i].baud), 
+                                         AP_SERIALMANAGER_NETWORK_BUFSIZE_RX, 
+                                         AP_SERIALMANAGER_NETWORK_BUFSIZE_TX);
+                    break;
+                /* ######################################################## */
             }
         }
     }

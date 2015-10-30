@@ -57,6 +57,13 @@
 #define AP_SERIALMANAGER_GPS_BUFSIZE_RX         256
 #define AP_SERIALMANAGER_GPS_BUFSIZE_TX         16
 
+/* ################################# Modified for RedningsGåsa */
+// Network default baud rates and buffer sizes
+#define AP_SERIALMANAGER_NETWORK_BAUD               115200
+#define AP_SERIALMANAGER_NETWORK_BUFSIZE_RX         256
+#define AP_SERIALMANAGER_NETWORK_BUFSIZE_TX         256
+/* ########################################################### */
+
 // AlexMos Gimbal protocol default baud rates and buffer sizes
 #define AP_SERIALMANAGER_ALEXMOS_BAUD           115200
 #define AP_SERIALMANAGER_ALEXMOS_BUFSIZE_RX     128
@@ -81,6 +88,9 @@ public:
         SerialProtocol_GPS2 = 6,        // do not use - use GPS and provide instance of 1
         SerialProtocol_AlexMos = 7,
         SerialProtocol_SToRM32 = 8,
+        /* Modified for RedningsGåsa */
+        SerialProtocol_Network = 9,
+        /* ######################### */
     };
 
     // Constructor

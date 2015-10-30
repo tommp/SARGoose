@@ -57,7 +57,7 @@ void setup(void)
 {
     hal.console->println("AP_InertialSensor startup...");
 
-#if CONFIG_HAL_BOARD == HAL_BOARD_APM2
+#if CONFIG_HAL_BOARD == HAL_BOARD_APM2 || CONFIG_HAL_BOARD == HAL_BOARD_MEGA2560
     // we need to stop the barometer from holding the SPI bus
     hal.gpio->pinMode(40, HAL_GPIO_OUTPUT);
     hal.gpio->write(40, 1);

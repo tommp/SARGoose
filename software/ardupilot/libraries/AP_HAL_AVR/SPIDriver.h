@@ -41,6 +41,7 @@ public:
     AP_HAL::SPIDeviceDriver* device(enum AP_HAL::SPIDevice d);
 
 private:
+    AVRSPI0DeviceDriver* _mpu9250;
     AVRSPI3DeviceDriver* _dataflash;
 };
 /* ############################################################################### */
