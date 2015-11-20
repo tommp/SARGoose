@@ -48,20 +48,40 @@ void setup()
     serial_manager.init();
     net.init(serial_manager);
     hal.scheduler->delay(500);
+
+    hal.console->println("Waiting for data...");
+
 }
 
 void loop()
-{
-	
-	net.update_send();
-	hal.scheduler->delay(300);
+{	
 	net.update_read();
-	hal.scheduler->delay(300);
-	net.print_data_to_console();
+	//Check if we got something
+	if(net.check_if_recieved_data()){
+		net.print_data_to_console();
+		while(net.check_if_recieved_data()){
+			net.update_read();
+			net.print_data_to_console();
+		}
+		hal.scheduler->delay(1000);
 
-	hal.console->println("Running\n\n");
-    // Delay for 10 mS will give us 100 Hz invocation rate
-    hal.scheduler->delay(300);
+		uint8_t message[30] = {'H','e','l','l','o',' ','p','c',':',')','\0'};
+		net.send_data_to_buffer(message, sizeof(message));
+		net.update_send();
+		hal.scheduler->delay(1000);
+		while(net.check_if_recieved_data()){
+			net.update_read();
+			net.print_data_to_console();
+		}
+		hal.scheduler->delay(1000);
+		while(net.check_if_recieved_data()){
+			net.update_read();
+			net.print_data_to_console();
+		}
+		hal.scheduler->delay(1000);
+
+	}
+	hal.scheduler->delay(500);
 }
 
 // Register above functions in HAL board level

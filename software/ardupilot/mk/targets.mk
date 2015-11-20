@@ -62,6 +62,10 @@ bbbmini: all
 mega: HAL_BOARD = HAL_BOARD_MEGA2560
 mega: TOOLCHAIN = AVR
 mega: all
+
+sargoose: HAL_BOARD = HAL_BOARD_LINUX
+sargoose: TOOLCHAIN = RPI
+sargoose: all
 #############################################
 
 empty: HAL_BOARD = HAL_BOARD_EMPTY

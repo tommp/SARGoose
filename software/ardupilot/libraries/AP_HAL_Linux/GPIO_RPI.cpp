@@ -1,6 +1,8 @@
 #include <AP_HAL/AP_HAL.h>
 
-#if CONFIG_HAL_BOARD_SUBTYPE == HAL_BOARD_SUBTYPE_LINUX_NAVIO
+/* Modified for Redningsgåsa */
+#if CONFIG_HAL_BOARD_SUBTYPE == HAL_BOARD_SUBTYPE_LINUX_NAVIO || CONFIG_HAL_BOARD_SUBTYPE == HAL_BOARD_SUBTYPE_LINUX_SARGOOSE
+/*###########################*/
 
 #include "GPIO.h"
 #include <stdio.h>

@@ -204,6 +204,11 @@ ifneq ($(findstring mega, $(MAKECMDGOALS)),)
 HAL_BOARD = HAL_BOARD_MEGA2560
 HAL_BOARD_SUBTYPE = HAL_BOARD_SUBTYPE_AVR_MEGA2560
 endif
+
+ifneq ($(findstring sargoose, $(MAKECMDGOALS)),)
+HAL_BOARD = HAL_BOARD_LINUX
+HAL_BOARD_SUBTYPE = HAL_BOARD_SUBTYPE_LINUX_SARGOOSE
+endif
 #####################################################
 
 # default to SITL
